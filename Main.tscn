@@ -19,4 +19,5 @@ margin_right = 640.0
 margin_bottom = 384.0
 text = "Quit"
 
+[connection signal="pressed" from="Play" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]
