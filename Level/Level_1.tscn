@@ -61,5 +61,6 @@ __meta__ = {
 [node name="pauselayer" type="CanvasLayer" parent="."]
 layer = 10
 visible = false
+follow_viewport_enable = true
 
 [node name="PausedMenu" parent="pauselayer" instance=ExtResource( 3 )]
