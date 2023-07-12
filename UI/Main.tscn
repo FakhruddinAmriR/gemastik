@@ -111,7 +111,6 @@ custom_fonts/font = SubResource( 1 )
 text = "PAUSED"
 align = 1
 uppercase = true
-percent_visible = -0.166667
 
 [node name="ResumeBtn" type="Button" parent="PausedMenu/BG2"]
 margin_right = 12.0

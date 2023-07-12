@@ -12,20 +12,16 @@ func _on_BackBtn_pressed():
 	get_node("MainMenu").show()
 
 func _on_Level1_pressed():
-	get_node("LevelMenu").hide()
-	get_node("World/Level_1").show()
+	get_tree().change_scene("res://Level/Level_1.tscn")
 
 func _on_Level2_pressed():
-	pass # Replace with function body.
-
+	get_tree().change_scene("res://Level/Level_2.tscn")
 
 func _on_Level3_pressed():
-	pass # Replace with function body.
-
+	get_tree().change_scene("res://Level/Level_3.tscn")
 
 func _on_Level4_pressed():
-	pass # Replace with function body.
-
+	get_tree().change_scene("res://Level/Level_4.tscn")
 
 func _on_Level5_pressed():
-	pass # Replace with function body.
+	get_tree().change_scene("res://Level/Level_5.tscn")

@@ -1,66 +1,78 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/AllTiles.tres" type="TileSet" id=2]
 [ext_resource path="res://UI/PausedMenu.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Enemy/BadKid.tscn" type="PackedScene" id=4]
+[ext_resource path="res://NextLevel.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 224.5 )
 
 [node name="Level_1" type="Node2D"]
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 128, 424 )
+scale = Vector2( 0.25, 0.25 )
+z_index = 5
+current = true
+zoom = Vector2( 0.5, 0.5 )
+
+[node name="PausedMenu" parent="Camera2D" instance=ExtResource( 3 )]
+visible = false
+position = Vector2( 0, 8 )
+scale = Vector2( 2, 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 128, 464 )
 scale = Vector2( 0.25, 0.25 )
 
 [node name="CameraRemote" type="RemoteTransform2D" parent="Player"]
-position = Vector2( 0, 24 )
+position = Vector2( 0, -160 )
 remote_path = NodePath("../../Camera2D")
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="PauseRemote" type="RemoteTransform2D" parent="Player"]
-position = Vector2( 0, 24 )
-remote_path = NodePath("../../Camera2D")
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 128, 470 )
-scale = Vector2( 0.25, 0.25 )
-current = true
-zoom = Vector2( 0.5, 0.5 )
-limit_left = 0
-limit_bottom = 576
-smoothing_enabled = true
 
 [node name="TileMap" type="TileMap" parent="."]
 z_index = -1
 tile_set = ExtResource( 2 )
 show_collision = true
 format = 1
-tile_data = PoolIntArray( 327739, 18, 0, 327740, 19, 0, 327741, 20, 0, 393229, 5, 0, 393230, 7, 0, 393273, 8, 0, 393274, 9, 0, 393275, 10, 0, 393276, 11, 0, 393277, 12, 0, 458761, 21, 0, 458763, 3, 0, 458764, 2, 0, 458765, 4, 0, 458766, 6, 0, 458771, 21, 0, 458809, 13, 0, 458810, 14, 0, 458811, 15, 0, 458812, 16, 0, 458813, 17, 0, 589823, 0, 0, 524288, 1, 0, 524289, 0, 0, 524290, 1, 0, 524291, 0, 0, 524292, 1, 0, 524293, 0, 0, 524294, 1, 0, 524295, 0, 0, 524296, 1, 0, 524297, 0, 0, 524298, 1, 0, 524299, 0, 0, 524300, 1, 0, 524301, 0, 0, 524302, 1, 0, 524303, 0, 0, 524304, 1, 0, 524305, 0, 0, 524306, 1, 0, 524307, 0, 0, 524308, 1, 0, 524309, 0, 0, 524310, 1, 0, 524311, 0, 0, 524312, 1, 0, 524313, 0, 0, 524314, 1, 0, 524315, 0, 0, 524316, 1, 0, 524317, 0, 0, 524318, 1, 0, 524319, 0, 0, 524320, 1, 0, 524321, 0, 0, 524322, 1, 0, 524323, 0, 0, 524324, 1, 0, 524325, 0, 0, 524326, 1, 0, 524327, 0, 0, 524328, 1, 0, 524329, 0, 0, 524330, 1, 0, 524331, 0, 0, 524332, 1, 0, 524333, 0, 0, 524334, 1, 0, 524335, 0, 0, 524336, 1, 0, 524337, 0, 0, 524338, 1, 0, 524339, 0, 0, 524340, 1, 0, 524341, 0, 0, 524342, 1, 0, 524343, 0, 0, 524344, 1, 0, 524345, 0, 0, 524346, 1, 0, 524347, 0, 0, 524348, 1, 0, 524349, 0, 0 )
-__meta__ = {
-"_edit_lock_": true
-}
+tile_data = PoolIntArray( 393229, 5, 0, 393230, 7, 0, 458755, 1, 0, 458759, 1, 0, 458761, 21, 0, 458763, 3, 0, 458764, 2, 0, 458765, 4, 0, 458766, 6, 0, 458771, 21, 0, 589823, 0, 0, 524288, 1, 0, 524289, 0, 0, 524290, 1, 0, 524291, 0, 0, 524292, 1, 0, 524293, 0, 0, 524294, 1, 0, 524295, 0, 0, 524296, 1, 0, 524297, 0, 0, 524298, 1, 0, 524299, 0, 0, 524300, 1, 0, 524301, 0, 0, 524302, 1, 0, 524303, 0, 0, 524304, 1, 0, 524305, 0, 0, 524306, 1, 0, 524307, 0, 0, 524308, 1, 0, 524309, 0, 0, 524310, 1, 0, 524311, 0, 0, 524312, 1, 0, 524313, 0, 0, 524314, 1, 0, 524315, 0, 0, 524316, 1, 0, 524317, 0, 0, 524318, 1, 0, 524319, 0, 0, 524320, 1, 0, 524321, 0, 0, 524322, 1, 0, 524323, 0, 0, 524324, 1, 0, 524325, 0, 0, 524326, 1, 0, 524327, 0, 0, 524328, 1, 0, 524329, 0, 0, 524330, 1, 0, 524331, 0, 0, 524332, 1, 0, 524333, 0, 0, 524334, 1, 0, 524335, 0, 0, 524336, 1, 0, 524337, 0, 0, 524338, 1, 0, 524339, 0, 0, 524340, 1, 0, 524341, 0, 0, 524342, 1, 0, 524343, 0, 0, 524344, 1, 0, 524345, 0, 0, 524346, 1, 0, 524347, 0, 0, 524348, 1, 0, 524349, 0, 0 )
 
 [node name="StartWall" type="StaticBody2D" parent="."]
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StartWall"]
+visible = false
 position = Vector2( -32, 352.5 )
 shape = SubResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
 
-[node name="pauselayer" type="CanvasLayer" parent="."]
-layer = 10
-visible = false
-follow_viewport_enable = true
+[node name="ColorRect" type="ColorRect" parent="StartWall"]
+margin_left = -256.0
+margin_top = 256.0
+margin_bottom = 576.0
+color = Color( 0, 0, 0, 1 )
 
-[node name="PausedMenu" parent="pauselayer" instance=ExtResource( 3 )]
+[node name="ColorRect2" type="ColorRect" parent="StartWall"]
+margin_left = -256.0
+margin_top = 576.0
+margin_right = 3968.0
+margin_bottom = 704.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Background" type="ColorRect" parent="BackgroundLayer"]
+margin_left = -256.0
+margin_top = -192.0
+margin_right = 3968.0
+margin_bottom = 588.0
+color = Color( 0.529412, 0.768627, 0.768627, 1 )
+
+[node name="BadKid" parent="." instance=ExtResource( 4 )]
+position = Vector2( 280, 464 )
+
+[node name="NextLevel" parent="." instance=ExtResource( 5 )]
+position = Vector2( 760, 440 )
