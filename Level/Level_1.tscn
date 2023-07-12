@@ -11,6 +11,9 @@ extents = Vector2( 32, 224.5 )
 
 [node name="Level_1" type="Node2D"]
 
+[node name="NextLevel" parent="." instance=ExtResource( 5 )]
+position = Vector2( 760, 440 )
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 128, 424 )
 scale = Vector2( 0.25, 0.25 )
@@ -73,6 +76,3 @@ color = Color( 0.529412, 0.768627, 0.768627, 1 )
 
 [node name="BadKid" parent="." instance=ExtResource( 4 )]
 position = Vector2( 280, 464 )
-
-[node name="NextLevel" parent="." instance=ExtResource( 5 )]
-position = Vector2( 760, 440 )
