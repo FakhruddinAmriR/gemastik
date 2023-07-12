@@ -1,13 +1,17 @@
 extends KinematicBody2D
 
-const SPEED = 100
-var direction = Vector2.LEFT
+export var gravity = 98
+export var speed = 100
+var direction = Vector2.RIGHT
 
-func _physics_process(delta):
-	var velocity = direction * SPEED * delta
-	move_and_collide(velocity)
-	
-func _on_Area2D_body_entered(body):
-	var collider = body.get_collider()
-	if collider is TileMap:
-		direction *= -1
+func _ready():
+	$Sprite.flip_h = true
+
+func _process(delta):
+	var collision = move_and_collide(direction * speed * delta)
+
+	if collision:
+		var colliderNormal = collision.normal
+		direction = direction.bounce(-direction) # Reverse the direction
+		$Sprite.flip_h = !$Sprite.flip_h
+
